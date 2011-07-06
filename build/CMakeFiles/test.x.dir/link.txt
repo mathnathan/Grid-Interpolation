@@ -1,0 +1,1 @@
+ifort   -fPIC -convert big_endian CMakeFiles/test.x.dir/fortran/test.f90.o  -o test.x -i_dynamic 

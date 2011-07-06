@@ -1,0 +1,33 @@
+nn=540
+mm=420
+ll=81
+
+xx=-92.25+findgen(nn)/120.
+yy=25+findgen(mm)/120.
+
+zwt=fltarr(nn,mm,ll)
+openr,1,'/data/zwt.dat',/f77_unformatted,/swap_if_little_endian
+readu,1,zwt  ;interface depths
+close,1
+
+z=fltarr(nn,mm,ll-1)
+for i=0,nn-1 do for j=0,mm-1 do for k=0,ll-2 do  $
+    z(i,j,k)=0.5*(zwt(i,j,k)+zwt(i,j,k+1))  ;grid cell centers
+
+hh=fltarr(nn,mm)
+openr,1,'/data/sigsbee-topo2-3filt-blended.dat',/f77_unformatted,/swap_if_little_endian
+readu,1,hh
+close,1
+
+tinit=fltarr(nn,mm,ll-1)
+
+;my interpolated hycom fields
+openr,1,'data/ts20090101.dat',/f77_unformatted,/swap_if_little_endian
+readu,1,tinit
+close,1
+
+;;read in interpolated hycom fields
+
+;;compare newly interpolated hycom fields with old interpolated hycom fields
+
+end
