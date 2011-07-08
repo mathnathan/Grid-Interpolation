@@ -112,6 +112,19 @@ read_hycom.x/fast:
 .PHONY : read_hycom.x/fast
 
 #=============================================================================
+# Target rules for targets named read_hycom_2d.x
+
+# Build rule for target.
+read_hycom_2d.x: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 read_hycom_2d.x
+.PHONY : read_hycom_2d.x
+
+# fast build rule for target.
+read_hycom_2d.x/fast:
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/build
+.PHONY : read_hycom_2d.x/fast
+
+#=============================================================================
 # Target rules for targets named test.x
 
 # Build rule for target.
@@ -131,6 +144,22 @@ fortran/htn.o: fortran/htn.f90.o
 fortran/htn.f90.o:
 	$(MAKE) -f CMakeFiles/read_hycom.x.dir/build.make CMakeFiles/read_hycom.x.dir/fortran/htn.f90.o
 .PHONY : fortran/htn.f90.o
+
+fortran/htn_2d.o: fortran/htn_2d.f90.o
+.PHONY : fortran/htn_2d.o
+
+# target to build an object file
+fortran/htn_2d.f90.o:
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/fortran/htn_2d.f90.o
+.PHONY : fortran/htn_2d.f90.o
+
+fortran/read_hycom_2d.o: fortran/read_hycom_2d.f90.o
+.PHONY : fortran/read_hycom_2d.o
+
+# target to build an object file
+fortran/read_hycom_2d.f90.o:
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/fortran/read_hycom_2d.f90.o
+.PHONY : fortran/read_hycom_2d.f90.o
 
 fortran/read_hycom_zlevel.o: fortran/read_hycom_zlevel.f90.o
 .PHONY : fortran/read_hycom_zlevel.o
@@ -156,9 +185,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... read_hycom.x"
+	@echo "... read_hycom_2d.x"
 	@echo "... rebuild_cache"
 	@echo "... test.x"
 	@echo "... fortran/htn.o"
+	@echo "... fortran/htn_2d.o"
+	@echo "... fortran/read_hycom_2d.o"
 	@echo "... fortran/read_hycom_zlevel.o"
 	@echo "... fortran/test.o"
 .PHONY : help

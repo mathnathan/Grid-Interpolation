@@ -1,0 +1,1 @@
+ifort   -fPIC -convert big_endian CMakeFiles/read_hycom_2d.x.dir/fortran/read_hycom_2d.f90.o CMakeFiles/read_hycom_2d.x.dir/fortran/htn_2d.f90.o  -o read_hycom_2d.x -i_dynamic 

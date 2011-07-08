@@ -1,0 +1,11 @@
+Time in find =      0.2269000 seconds
+Number of calls to find =      453600 times
+Average time per call to find =      0.0000005 seconds
+
+Time in find_depth =      4.8281002 seconds
+Number of calls to find_depth =    18144000 times
+Average time per call to find_depth =      0.0000003 seconds
+
+Total time =      8.4322004 seconds
+Percentage of time in find =      0.0269088 seconds
+Percentage of time in find_depth =      0.5725789 seconds

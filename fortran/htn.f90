@@ -66,7 +66,7 @@ contains
     integer, intent(in) :: nh, mh, lh, n, m, l
 
     ! loop variables, and indices
-    integer :: i, j, k, x, y, z, nx, ny, nz
+    integer :: i, j, k, x, y, z
 
     ! Variable for the interpolation calculations
     real*4 :: dx, dy, dz, s1, s2, q1, q2, w1, w2
@@ -103,7 +103,7 @@ contains
     total_time = 0
 ! ------------- END TIMING JUNK -----------------
 
-    print *, "ENTERING HYCOM2NCOM SUBROUTINE"
+    print *, "ENTERING HYCOM2NCOM_2D SUBROUTINE"
 
     call system_clock( COUNT=total_start )
     allocate(nearest_hycom_point(n,m,l))
@@ -140,16 +140,11 @@ contains
           call system_clock( COUNT=clock_stop )
           time_in_find_depth = time_in_find_depth + (clock_stop-clock_start)
 
-          ! find the weights for parameterization
-          dx = abs(hycom_lon(x)-ncom_lon(i))/abs(hycom_lon(x)-hycom_lon(x+1))
-
           ! Squish the hexahedrom into a plane
           if(  abs(hycom_r(x,y,z)) > lrg &
             .or. abs(hycom_r(x,y,z-1)) > lrg ) then
             ! just leave s1 equal to the previous value for now
           else
-            dy = abs(hycom_lat(y)-ncom_lat(j))/ &
-                 abs(hycom_lat(y)-hycom_lat(y+1))
             dz = abs(hycom_z(x,y,z)-ncom_z(i,j,k))/ &
                  abs(hycom_z(x,y,z)-hycom_z(x,y,z-1))
             s1 = hycom_r(x,y,z)*(1.-dz)+hycom_r(x,y,z-1)*dz
@@ -159,10 +154,8 @@ contains
             .or. abs(hycom_r(x+1,y,z-1)) > lrg ) then
               ! just leave s2 equal to the previous value for now
           else
-            dy = abs(hycom_lat(y)-ncom_lat(j))/ &
-                 abs(hycom_lat(y)-hycom_lat(y+1))
             dz = abs(hycom_z(x+1,y,z)-ncom_z(i,j,k))/ &
-            abs(hycom_z(x+1,y,z)-hycom_z(x+1,y,z-1))
+                 abs(hycom_z(x+1,y,z)-hycom_z(x+1,y,z-1))
             s2 = hycom_r(x+1,y,z)*(1.-dz)+hycom_r(x+1,y,z-1)*dz
           endif
 
@@ -170,10 +163,8 @@ contains
             .or. abs(hycom_r(x,y+1,z-1)) > lrg ) then
               ! just leave q1 equal to the previous value for now
           else
-            dy = abs(hycom_lat(y)-ncom_lat(j))/ &
-                 abs(hycom_lat(y)-hycom_lat(y+1))
             dz = abs(hycom_z(x,y+1,z)-ncom_z(i,j,k))/ &
-            abs(hycom_z(x,y+1,z)-hycom_z(x,y+1,z-1))
+                 abs(hycom_z(x,y+1,z)-hycom_z(x,y+1,z-1))
             q1 = hycom_r(x,y+1,z)*(1.-dz)+hycom_r(x,y+1,z-1)*dz
           endif
 
@@ -181,12 +172,14 @@ contains
             .or. abs(hycom_r(x+1,y+1,z-1)) > lrg ) then
               ! just leave q2 equal to the previous value for now
           else
-            dy = abs(hycom_lat(y)-ncom_lat(j))/ &
-                 abs(hycom_lat(y)-hycom_lat(y+1))
             dz = abs(hycom_z(x+1,y+1,z)-ncom_z(i,j,k))/ &
-            abs(hycom_z(x+1,y+1,z)-hycom_z(x+1,y+1,z-1))
+                 abs(hycom_z(x+1,y+1,z)-hycom_z(x+1,y+1,z-1))
             q2 = hycom_r(x+1,y+1,z)*(1.-dz)+hycom_r(x+1,y+1,z-1)*dz
           endif
+
+          ! find the weights for parameterization
+          dx = abs(hycom_lon(x)-ncom_lon(i))/abs(hycom_lon(x)-hycom_lon(x+1))
+          dy = abs(hycom_lat(y)-ncom_lat(j))/abs(hycom_lat(y)-hycom_lat(y+1))
 
           ! Squish the plane into a line
             w1 = s1*(1.-dx)+s2*dx
@@ -224,7 +217,8 @@ contains
     time_in_find/total_time, " seconds"
     write(90,fmt) "Percentage of time in find_depth =", &
     time_in_find_depth/total_time, " seconds"
-    print *, "LEAVING HYCOM2NCOM SUBROUTINE"
+
+    print *, "LEAVING HYCOM2NCOM_2D SUBROUTINE"
   end subroutine hycom2ncom
 
 end module Interpolate

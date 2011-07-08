@@ -89,6 +89,42 @@ clean: CMakeFiles/read_hycom.x.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/read_hycom_2d.x.dir
+
+# All Build rule for target.
+CMakeFiles/read_hycom_2d.x.dir/all:
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/depend
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/requires
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /panfs/storage.local/coaps/home/ndc08/code/hycom2ncom/build/CMakeFiles  3 4
+	@echo "Built target read_hycom_2d.x"
+.PHONY : CMakeFiles/read_hycom_2d.x.dir/all
+
+# Include target in all.
+all: CMakeFiles/read_hycom_2d.x.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/read_hycom_2d.x.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /panfs/storage.local/coaps/home/ndc08/code/hycom2ncom/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/read_hycom_2d.x.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /panfs/storage.local/coaps/home/ndc08/code/hycom2ncom/build/CMakeFiles 0
+.PHONY : CMakeFiles/read_hycom_2d.x.dir/rule
+
+# Convenience name for target.
+read_hycom_2d.x: CMakeFiles/read_hycom_2d.x.dir/rule
+.PHONY : read_hycom_2d.x
+
+# clean rule for target.
+CMakeFiles/read_hycom_2d.x.dir/clean:
+	$(MAKE) -f CMakeFiles/read_hycom_2d.x.dir/build.make CMakeFiles/read_hycom_2d.x.dir/clean
+.PHONY : CMakeFiles/read_hycom_2d.x.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/read_hycom_2d.x.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test.x.dir
 
 # All Build rule for target.
@@ -96,7 +132,7 @@ CMakeFiles/test.x.dir/all:
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/depend
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/requires
 	$(MAKE) -f CMakeFiles/test.x.dir/build.make CMakeFiles/test.x.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /panfs/storage.local/coaps/home/ndc08/code/hycom2ncom/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /panfs/storage.local/coaps/home/ndc08/code/hycom2ncom/build/CMakeFiles  5
 	@echo "Built target test.x"
 .PHONY : CMakeFiles/test.x.dir/all
 

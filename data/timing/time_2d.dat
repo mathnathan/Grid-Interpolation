@@ -1,0 +1,6 @@
+Time in find =      0.1893000 seconds
+Number of calls to find =      453600 times
+Average time per call to find =      0.0000004 seconds
+
+Total time =      0.2385000 seconds
+Percentage of time in find =      0.7937107 seconds
