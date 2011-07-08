@@ -17,8 +17,11 @@ if (CMAKE_Fortran_COMPILER STREQUAL "ifort")
 endif (CMAKE_Fortran_COMPILER STREQUAL "ifort")
 
 # build executables
-set (NMPROGRAMS "fortran/read_hycom_zlevel.f90" "fortran/htn.f90")
-set (EXECUTABLES "read_hycom.x" ${NMPROGRAMS})
+set (NMPROGRAMS1 "fortran/read_hycom_zlevel.f90" "fortran/htn.f90")
+set (NMPROGRAMS2 "fortran/read_hycom_2d.f90" "fortran/htn_2d.f90")
+set (EXECUTABLES1 "read_hycom.x" ${NMPROGRAMS1})
+set (EXECUTABLES2 "read_hycom_2d.x" ${NMPROGRAMS2})
 
-add_executable ( ${EXECUTABLES} )
+add_executable ( ${EXECUTABLES1} )
+add_executable ( ${EXECUTABLES2} )
 add_executable ( test.x "fortran/test.f90" )
